@@ -1231,7 +1231,7 @@ export default function App() {
                         <span style={{
                           width: '16px',
                           height: '16px',
-                          background: '#F3F4F6',
+                          backgroundColor: '#EF4444',
                           borderRadius: '50%',
                           fontSize: '10px',
                           color: 'white',
