@@ -635,7 +635,7 @@ export default function App() {
                 display: 'flex', 
                 alignItems: 'center', 
                 justifyContent: 'center',
-                borderRadius: idx === 5 ? '100px' : '12px', 
+                borderRadius: '100%', 
                 cursor: 'pointer',
                 background: idx === 5 ? 'rgb(37, 99, 235)' : 'transparent',
                 color: idx === 5 ? '#FFFFFF' : '#23262D',
@@ -668,7 +668,7 @@ export default function App() {
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center',
-              borderRadius: '12px', 
+              borderRadius: '100%', 
               cursor: 'pointer',
               color: '#23262D',
               fontSize: '20px',
@@ -704,7 +704,7 @@ export default function App() {
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center',
-              borderRadius: '12px', 
+              borderRadius: '100%', 
               cursor: 'pointer',
               color: '#23262D',
               fontSize: '20px',
@@ -748,7 +748,7 @@ export default function App() {
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center',
-              borderRadius: '12px', 
+              borderRadius: '100%', 
               cursor: 'pointer',
               color: '#23262D',
               fontSize: '20px',
@@ -787,7 +787,17 @@ export default function App() {
           {/* Клиентская секция */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', borderBottom: '1px solid #F3F4F6', paddingBottom: '24px', marginBottom: '16px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-              <div style={{ fontSize: '13px', color: '#9CA3AF' }}>ИНН 165039734691</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <div style={{ fontSize: '13px', color: '#9CA3AF' }}>ИНН 165039734691</div>
+                <div style={{ 
+                  fontSize: '18px', 
+                  fontWeight: '600', 
+                  lineHeight: 1.3,
+                  color: '#111827',
+                }}>
+                  ООО «ОБЩЕСТВО ЮИКС ЮАЙ РЕШЕНИЙ»
+                </div>
+              </div>
               <span style={{ 
                 background: '#32C665', 
                 color: 'white', 
@@ -796,14 +806,6 @@ export default function App() {
                 fontSize: '12px',
                 fontWeight: '500',
               }}>Клиент</span>
-            </div>
-            <div style={{ 
-              fontSize: '18px', 
-              fontWeight: '600', 
-              lineHeight: 1.3,
-              color: '#111827',
-            }}>
-              ООО «ОБЩЕСТВО ЮИКС ЮАЙ РЕШЕНИЙ»
             </div>
             
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -882,8 +884,9 @@ export default function App() {
 
             <button style={{
               width: '100%',
-              padding: '12px',
-              background: 'transparent',
+              height: '40px',
+              padding: '0 12px',
+              background: '#EDF5FF',
               border: 'none',
               cursor: 'pointer',
               display: 'flex',
@@ -893,6 +896,7 @@ export default function App() {
               color: '#2563EB',
               fontWeight: '500',
               fontSize: '14px',
+              borderRadius: '8px',
             }}>
               <span style={{ fontSize: '18px' }}>+</span>
               Создать лид
@@ -1100,7 +1104,7 @@ export default function App() {
                     height: '32px',
                     borderRadius: '8px',
                     cursor: 'pointer',
-                    background: isActive ? '#EFF6FF' : 'transparent',
+                    background: isActive ? '#F3F4F6' : 'transparent',
                     color: isActive ? '#2563EB' : '#4F525A',
                     fontWeight: '400',
                     fontSize: '14px',
@@ -1227,7 +1231,7 @@ export default function App() {
                         <span style={{
                           width: '16px',
                           height: '16px',
-                          background: '#EF4444',
+                          background: '#F3F4F6',
                           borderRadius: '50%',
                           fontSize: '10px',
                           color: 'white',
@@ -1329,7 +1333,7 @@ export default function App() {
               padding: '24px',
             }}>
               <div className="cards-grid">
-                {cards.map((card, idx) => (
+                {(activeTab === 4 ? cards.slice(0, 4) : cards).map((card, idx) => (
                   <div 
                     key={idx} 
                     className="card"

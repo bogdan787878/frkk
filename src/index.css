@@ -53,3 +53,18 @@ body {
   width: 100%;
   height: 100vh;
 }
+
+/* Меню с иконками - hover */
+.nav-icon:hover {
+  background: #E5E7EB !important;
+}
+
+/* Меню с разделами - hover */
+.menu-item:hover {
+  background: #F3F4F6 !important;
+}
+
+/* Таб-бар - hover */
+.tab-btn:hover {
+  background: #F3F4F6 !important;
+}
