@@ -54,8 +54,8 @@ body {
   height: 100vh;
 }
 
-/* Меню с иконками - hover */
-.nav-icon:hover {
+/* Меню с иконками - hover (кроме активного) */
+.nav-icon:not(.nav-icon-active):hover {
   background: #E5E7EB !important;
 }
 

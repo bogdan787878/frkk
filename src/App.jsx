@@ -155,12 +155,11 @@ export default function App() {
     { title: 'Расходные документы', bonus: '20 баллов' },
     { title: 'ДБО', bonus: 'Не начисляются', bonusGray: true },
     { title: 'Установка полномочий', bonus: '10-30 баллов' },
-    { title: 'Пакет СМС «Безопасность и...', bonus: '20 баллов' },
+    { title: 'Пакет СМС «Безопасность и контроль»', bonus: '20 баллов' },
     { title: 'СМС-информирование', bonus: '20 баллов' },
-    { title: 'Пакет «На старте»', bonus: 'Не начисляются', bonusGray: true },
-    { title: 'Пакет «Всё по делу»', bonus: '10-30 баллов' },
-    { title: 'Пакет «Всё включено»', bonus: '20 баллов', badge: 'Новое' },
-    { title: 'Пакет «Большие обороты»', bonus: '20 баллов' },
+    { title: 'Рублевые платежные поручения» ', bonus: 'Не начисляются', bonusGray: true },
+    { title: 'Онлайн инкассация в АДМ»', bonus: '10-30 баллов' },
+    { title: 'Заранее выданные акцепты', bonus: '20 баллов', badge: 'Новое' },
   ];
 
   // Сохранение в localStorage с обновлением state
@@ -475,7 +474,7 @@ export default function App() {
               gap: '6px',
               boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
             }}>
-              <span style={{ color: '#6B7280' }}>Нераспределенные лиды:</span>
+              <span style={{ color: '#22242A' }}>Нераспределенные лиды:</span>
               <span style={{ fontWeight: '600', color: '#128238' }}>57</span>
               <span style={{ 
                 color: '#F64E4E', 
@@ -493,7 +492,7 @@ export default function App() {
               gap: '6px',
               boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
             }}>
-              <span style={{ color: '#6B7280' }}>Назначенные лиды:</span>
+              <span style={{ color: '#22242A' }}>Назначенные лиды:</span>
               <span style={{ fontWeight: '600', color: '#128238' }}>57</span>
               <span style={{ 
                 color: '#F64E4E', 
@@ -591,16 +590,21 @@ export default function App() {
                 fontWeight: '500',
               }}>5</span>
             </button>
-            <button style={{
-              background: '#2563EB',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '10px 16px',
-              fontWeight: '500',
-              cursor: 'pointer',
-              fontSize: '13px',
-            }}>
+            <button 
+              style={{
+                background: '#2563EB',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '10px 16px',
+                fontWeight: '500',
+                cursor: 'pointer',
+                fontSize: '13px',
+                transition: 'background 0.15s',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = '#0046E2'}
+              onMouseLeave={(e) => e.currentTarget.style.background = '#2563EB'}
+            >
               Вернуться к клиенту
             </button>
           </div>
@@ -628,7 +632,7 @@ export default function App() {
           {[0, 1, 2, 3, 4, 5, 6].map((idx) => (
             <div 
               key={idx} 
-              className="nav-icon"
+              className={`nav-icon${idx === 5 ? ' nav-icon-active' : ''}`}
               style={{
                 width: '48px', 
                 height: '48px',
@@ -774,7 +778,7 @@ export default function App() {
           position: 'fixed',
           top: '80px', 
           right: '24px',
-          width: '360px',
+          width: '356px',
           bottom: '72px',
           background: '#FFFFFF',
           borderRadius: '16px',
@@ -785,13 +789,13 @@ export default function App() {
           padding: '24px',
         }}>
           {/* Клиентская секция */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', borderBottom: '1px solid #F3F4F6', paddingBottom: '24px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '24px', marginBottom: '16px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                 <div style={{ fontSize: '13px', color: '#9CA3AF' }}>ИНН 165039734691</div>
                 <div style={{ 
                   fontSize: '18px', 
-                  fontWeight: '600', 
+                  fontWeight: '500', 
                   lineHeight: 1.3,
                   color: '#111827',
                 }}>
@@ -820,7 +824,7 @@ export default function App() {
                   fontWeight: '500',
                 }}>ЕИО</span>
               </div>
-              <div style={{ fontWeight: '600', color: '#111827', lineHeight: 1.4 }}>
+              <div style={{ fontWeight: '500', color: '#111827', lineHeight: 1.4 }}>
                 Константинопольский Константин Константинович
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
@@ -882,29 +886,34 @@ export default function App() {
               </div>
             </div>
 
-            <button style={{
-              width: '100%',
-              height: '40px',
-              padding: '0 12px',
-              background: '#EDF5FF',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              color: '#2563EB',
-              fontWeight: '500',
-              fontSize: '14px',
-              borderRadius: '8px',
-            }}>
+            <button 
+              style={{
+                width: '100%',
+                height: '40px',
+                padding: '0 12px',
+                background: '#EDF5FF',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                color: '#2563EB',
+                fontWeight: '500',
+                fontSize: '14px',
+                borderRadius: '8px',
+                transition: 'background 0.15s',
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = '#DDE9FF'}
+              onMouseLeave={(e) => e.currentTarget.style.background = '#EDF5FF'}
+            >
               <span style={{ fontSize: '18px' }}>+</span>
               Создать лид
             </button>
           </div>
 
           {/* Leads Section */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', borderBottom: '1px solid #F3F4F6', paddingBottom: '16px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '16px', marginBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <span style={{ fontWeight: '600', color: '#111827' }}>Лиды</span>
                 <span style={{ 
@@ -921,7 +930,11 @@ export default function App() {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>4</span>
-                <span style={{ marginLeft: 'auto', color: '#2563EB', fontSize: '13px', cursor: 'pointer', fontWeight: '500' }}>Показать все</span>
+                <span 
+                  style={{ marginLeft: 'auto', color: '#2563EB', fontSize: '13px', cursor: 'pointer', fontWeight: '500', transition: 'color 0.15s' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#0046E2'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#2563EB'}
+                >Показать все</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {[
@@ -947,7 +960,7 @@ export default function App() {
                         <path d="M15.8189 18.6967L20.5238 13.9918C21.0315 13.4841 21.0315 12.661 20.5238 12.1533L18.4858 10.1153C17.9781 9.60764 17.155 9.60764 16.6473 10.1153L12.1413 14.6214C11.364 15.3987 10.1037 15.3987 9.3264 14.6214C8.54909 13.8441 8.5491 12.5838 9.3264 11.8065L13.8325 7.30045C14.3401 6.79277 14.3401 5.96965 13.8325 5.46197L11.7557 3.38522C11.248 2.87754 10.4249 2.87754 9.91724 3.38522L5.21233 8.09012C2.28339 11.019 2.28339 15.7678 5.21232 18.6967C8.14125 21.6256 12.89 21.6256 15.8189 18.6967ZM17.1383 15.5389L14.8997 17.7775C12.4784 20.1987 8.5528 20.1987 6.13156 17.7775C3.71031 15.3562 3.71031 11.4306 6.13157 9.00936L8.37017 6.77076L10.4469 8.84751L8.40717 10.8873C7.12218 12.1722 7.12217 14.2556 8.40716 15.5406C9.69214 16.8256 11.7755 16.8256 13.0605 15.5406L15.1003 13.5009L17.1383 15.5389ZM11.3662 7.92827L9.28941 5.85152L10.8365 4.30446L12.9132 6.38121L11.3662 7.92827ZM18.0575 14.6196L19.6046 13.0726L17.5666 11.0346L16.0195 12.5816L18.0575 14.6196Z" fill="currentColor" fillRule="evenodd" />
                       </svg>
                     </div>
-                    <span style={{ flex: 1, fontSize: '14px', color: '#374151' }}>{item.text}</span>
+                    <span style={{ flex: 1, fontSize: '14px', color: '#374151', fontWeight: '400' }}>{item.text}</span>
                     <span style={{ 
                       background: '#32C665', 
                       color: 'white', 
@@ -962,15 +975,16 @@ export default function App() {
             </div>
 
           {/* Offers Section */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', borderBottom: '1px solid #F3F4F6', paddingBottom: '16px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', paddingBottom: '16px', marginBottom: '16px' }}>
               <div style={{ fontWeight: '600', color: '#111827' }}>Предложите клиенту</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {[
-                  { title: 'Сопровождение контракта ВЭД', desc: 'Совпадение по ОГРН: У клиента есть международные расчеты' },
-                  { title: 'Скидка на пакет «Большие обороты»', desc: 'Стимулирующая акция в рамках маркетинговой кампании' },
+                  { title: 'Сопровождение контракта ВЭД' },
+                  { title: 'Скидка на пакет «Большие обороты»' },
                 ].map((offer, i) => (
                   <div key={i} style={{ 
                     display: 'flex', 
+                    alignItems: 'center',
                     gap: '12px',
                   }}>
                     <div style={{ 
@@ -988,10 +1002,7 @@ export default function App() {
                         <path d="M21.7338 13.3846C23.2032 12.017 23.2924 9.71948 21.9335 8.24199L18.4714 4.47774C17.133 3.02254 14.8793 2.89753 13.3881 4.19579L11.9572 5.44163L10.6533 4.27933C9.14888 2.93835 6.84235 3.07038 5.5008 4.57427L2.02881 8.46642C0.686905 9.97071 0.818549 12.278 2.32284 13.6199L9.66053 20.1655C11.0716 21.4242 13.2103 21.3969 14.5887 20.1026L21.317 13.7848L21.3103 13.7788L21.7338 13.3846ZM8.78308 8.20518L10.9689 6.30213L9.78826 5.24977C8.81967 4.38639 7.33464 4.4714 6.4709 5.43966L2.99892 9.3318C2.13495 10.3003 2.21971 11.7858 3.18823 12.6498L4.72451 14.0203C6.06901 12.9844 7.99774 13.0002 9.3315 14.149L11.5598 16.0682C12.6162 16.9781 13.0459 18.3915 12.7224 19.7054C13.0773 19.6066 13.4134 19.4229 13.6989 19.1549L17.8588 15.2487L13.9151 11.3372C13.6786 11.1026 13.3031 11.0848 13.0455 11.2958L12.069 12.0957C11.0678 12.9159 9.6106 12.8546 8.6818 11.9533C7.61199 10.9151 7.65876 9.18407 8.78308 8.20518ZM11.3705 19.6792C11.7257 18.7591 11.4685 17.7053 10.7114 17.0532L8.4831 15.134C7.69007 14.4509 6.57034 14.39 5.72188 14.91L10.5259 19.1954C10.7781 19.4204 11.0665 19.5816 11.3705 19.6792ZM20.9767 9.12203C21.8516 10.0733 21.7941 11.5525 20.8481 12.433L18.7938 14.3451L14.8306 10.4142C14.1212 9.71052 12.9946 9.65698 12.2217 10.2902L11.2452 11.0901C10.7551 11.4916 10.0418 11.4616 9.58714 11.0203C9.06346 10.5122 9.08636 9.66481 9.63672 9.18564L14.2418 5.17625C15.2018 4.34038 16.6529 4.42087 17.5146 5.35778L20.9767 9.12203Z" fill="currentColor" fillRule="evenodd" />
                       </svg>
                     </div>
-                    <div>
-                      <div style={{ fontWeight: '500', fontSize: '14px', marginBottom: '4px', color: '#111827' }}>{offer.title}</div>
-                      <div style={{ color: '#6B7280', fontSize: '13px', lineHeight: 1.4 }}>{offer.desc}</div>
-                    </div>
+                    <div style={{ fontWeight: '400', fontSize: '14px', color: '#111827' }}>{offer.title}</div>
                   </div>
                 ))}
               </div>
@@ -1015,7 +1026,11 @@ export default function App() {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>8</span>
-                <span style={{ marginLeft: 'auto', color: '#2563EB', fontSize: '13px', cursor: 'pointer', fontWeight: '500' }}>Показать все</span>
+                <span 
+                  style={{ marginLeft: 'auto', color: '#2563EB', fontSize: '13px', cursor: 'pointer', fontWeight: '500', transition: 'color 0.15s' }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = '#0046E2'}
+                  onMouseLeave={(e) => e.currentTarget.style.color = '#2563EB'}
+                >Показать все</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {[
@@ -1041,7 +1056,7 @@ export default function App() {
                         <path d="M21.0187 8.17489C21.0187 8.49989 20.8092 8.82489 20.39 8.82489L19 8.82489L19 15.1999L20.39 15.1999C20.749 15.1999 21.04 15.491 21.04 15.8499C21.04 16.2089 20.749 16.4999 20.39 16.4999L19 16.4999L19 17.9999C19 19.6499 17.66 20.9999 16 20.9999L7 20.9999C5.34 20.9999 4 19.6599 4 17.9999L4 6.03491C4 4.37491 5.34 3.03491 7 3.03491L16 3.03491C17.66 3.03491 19 4.37491 19 6.03491L19 7.52489L20.39 7.52489C20.8092 7.52489 21.0187 7.84989 21.0187 8.17489ZM17.7 6.03491C17.7 5.09491 16.94 4.33491 16 4.33491L7 4.33491C6.06 4.33491 5.3 5.09491 5.3 6.03491L5.3 17.9999C5.3 18.9399 6.06 19.6999 7 19.6999L16 19.6999C16.94 19.6999 17.7 18.9399 17.7 17.9999L17.7 6.03491ZM9.5 8.22675C9.5 8.77903 9.05228 9.22675 8.5 9.22675C7.94772 9.22675 7.5 8.77903 7.5 8.22675C7.5 7.67446 7.94772 7.22675 8.5 7.22675C9.05228 7.22675 9.5 7.67446 9.5 8.22675ZM15.37 8.22682C15.37 8.58581 15.079 8.87682 14.72 8.87682L11.5 8.87682C11.141 8.87682 10.85 8.58581 10.85 8.22682C10.85 7.86784 11.141 7.57682 11.5 7.57682L14.72 7.57682C15.079 7.57682 15.37 7.86784 15.37 8.22682ZM9.52585 11.9999C9.52585 12.5522 9.07814 12.9999 8.52585 12.9999C7.97357 12.9999 7.52585 12.5522 7.52585 11.9999C7.52585 11.4477 7.97357 10.9999 8.52585 10.9999C9.07814 10.9999 9.52585 11.4477 9.52585 11.9999ZM15.3809 11.9999C15.3809 12.3589 15.0898 12.6499 14.7309 12.6499L11.5109 12.6499C11.1519 12.6499 10.8609 12.3589 10.8609 11.9999C10.8609 11.641 11.1519 11.3499 11.5109 11.3499L14.7309 11.3499C15.0898 11.3499 15.3809 11.641 15.3809 11.9999ZM8.52585 16.8025C7.97357 16.8025 7.52585 16.3547 7.52585 15.8025C7.52585 15.2502 7.97357 14.8025 8.52585 14.8025C9.07814 14.8025 9.52585 15.2502 9.52585 15.8025C9.52585 16.3547 9.07814 16.8025 8.52585 16.8025ZM15.37 15.8293C15.37 16.1883 15.079 16.4793 14.72 16.4793L11.5 16.4793C11.141 16.4793 10.85 16.1883 10.85 15.8293C10.85 15.4703 11.141 15.1793 11.5 15.1793L14.72 15.1793C15.079 15.1793 15.37 15.4703 15.37 15.8293Z" fill="currentColor" fillRule="evenodd" />
                       </svg>
                     </div>
-                    <span style={{ flex: 1, fontSize: '14px', color: '#374151' }}>{task.text}</span>
+                    <span style={{ flex: 1, fontSize: '14px', color: '#374151', fontWeight: '400' }}>{task.text}</span>
                     <span style={{ 
                       background: task.badgeColor, 
                       color: task.textColor, 
@@ -1064,7 +1079,7 @@ export default function App() {
           position: 'fixed',
           top: '80px',
           left: '96px',
-          right: '400px',
+          right: '396px',
           bottom: '72px',
           background: '#FFFFFF',
           borderRadius: '16px',
@@ -1086,7 +1101,7 @@ export default function App() {
           }}>
             {navMenuItems.map((item, idx) => {
               if (item.divider) {
-                return <div key={idx} style={{ height: '1px', background: '#F3F4F6', margin: '12px 0' }} />;
+                return null; // Убран divider
               }
               const isActive = item.active;
               // Показывать счётчик для: Счета, РКО, Небанковские сервисы, Депозиты и остатки, Кредиты, ВЭД
@@ -1255,7 +1270,7 @@ export default function App() {
                         border: 'none',
                         background: 'transparent',
                         cursor: 'pointer',
-                        fontWeight: '400',
+                        fontWeight: '500',
                         whiteSpace: 'nowrap',
                         fontSize: '14px',
                         color: '#2563EB',
@@ -1263,6 +1278,8 @@ export default function App() {
                         marginBottom: '-1px',
                         transition: 'color 0.15s',
                       }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#0046E2'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#2563EB'}
                     >
                       Показать все
                     </button>
